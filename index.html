@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>meow kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="piano">
+  <div class="keys">
+    <div data-key="87" class="key black"></div>
+    <div data-key="69" class="key black"></div>
+    <div class="key clear"></div>
+    <div data-key="84" class="key black"></div>
+    <div data-key="89" class="key black"></div>
+    <div data-key="85" class="key black"></div>
+    <div class="key clear"></div>
+    <div data-key="79" class="key black"></div>
+  </div>
+  <div class="keys">
+    <div data-key="65" class="key white"></div>
+    <div data-key="83" class="key white"></div>
+    <div data-key="68" class="key white"></div>
+    <div data-key="70" class="key white"></div>
+    <div data-key="71" class="key white"></div>
+    <div data-key="72" class="key white"></div>
+    <div data-key="74" class="key white"></div>
+    <div data-key="75" class="key white"></div>
+    <div data-key="76" class="key white"></div>
+  </div>
+</div>  
+
+
+  <audio data-key="65" src="sounds/cat-meow-c.wav"></audio>
+  <audio data-key="87" src="sounds/cat-meow-c-s.wav"></audio>
+  <audio data-key="83" src="sounds/cat-meow-d.wav"></audio>
+  <audio data-key="69" src="sounds/cat-meow-d-s.wav"></audio>
+  <audio data-key="68" src="sounds/cat-meow-e.wav"></audio>
+  <audio data-key="70" src="sounds/cat-meow-f.wav"></audio>
+  <audio data-key="84" src="sounds/cat-meow-f-s.wav"></audio>
+  <audio data-key="71" src="sounds/cat-meow-g.wav"></audio>
+  <audio data-key="89" src="sounds/cat-meow-g-s.wav"></audio>
+  <audio data-key="72" src="sounds/cat-meow-a.wav"></audio>
+  <audio data-key="85" src="sounds/cat-meow-a-s.wav"></audio>
+  <audio data-key="74" src="sounds/cat-meow-b.wav"></audio>
+  <audio data-key="75" src="sounds/cat-meow-c-2.wav"></audio>
+  <audio data-key="79" src="sounds/cat-meow-c-2-s.wav"></audio>
+  <audio data-key="76" src="sounds/cat-meow-d-2.wav"></audio>
+  
+<script>
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+  window.addEventListener('click', playSound);
+</script>
+</body>
+</html>

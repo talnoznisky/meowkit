@@ -1,0 +1,41 @@
+#piano {
+  padding: 10px;
+  height: 350px;
+  width: 100%;
+  position: relative;
+}
+.keys{
+  margin: 3px;
+  
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.key{
+  display: inline-block;
+  text-align: center;
+  width: 9.8%;
+  height: 100%;
+  padding: 4px;
+  transition: all .07s ease;
+}
+
+.black{
+  content: url(pics/cat-face-gray.png);
+}
+
+.white{
+  content: url(pics/cat-face-white.png);
+}
+
+.clear{
+  border: none;
+}
+
+.playing {
+  transform: scale(1.1);
+ /*
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+ */ 
+}
