@@ -1,18 +1,21 @@
-cursor: pointer;
+
 
 #piano {
+  cursor: pointer;
   padding: 10px;
   height: 350px;
   width: 100%;
   position: relative;
 }
 .keys{
+  cursor: pointer;
   margin: 3px;
   display: flex;
   flex: 1;
   justify-content: center;
 }
 .key{
+  cursor: pointer;
   display: inline-block;
   text-align: center;
   width: 9.8%;
@@ -38,6 +41,7 @@ cursor: pointer;
 }
 
 .beats{
+  cursor: pointer;
   margin: 3px;
   display: flex;
   flex: 1;
@@ -45,7 +49,7 @@ cursor: pointer;
 }
 
 .beat{
-  font-family: 'Dekko', sans-serif;
+  cursor: pointer; 
   font-size: 12px;
   line-height: 45px;
   border: 2px solid pink;
