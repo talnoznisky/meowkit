@@ -1,0 +1,18 @@
+notes:
+check if e = keydown or click
+
+
+domelement
+param (event names)
+function to attach
+
+window
+'click' 'keydown'
+playSound
+
+function addListenerMulti(elem, eNames, listener){
+  var events = eNames.split(' ');
+  for(var i = 0; len=events.length; i++){
+  element.addEventListener(events[i],listener,false);
+  }
+}

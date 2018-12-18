@@ -1,4 +1,10 @@
-
+.active{
+  border: 5px solid #E0115F !important;
+  margin: 20px 7px 0 7px !important;
+  background-color: #FDB9C8;
+  color: white;
+  outline: none;
+}
 
 #piano {
   cursor: pointer;
@@ -52,12 +58,24 @@
   cursor: pointer; 
   font-size: 12px;
   line-height: 45px;
-  border: 2px solid pink;
+  border: 2px solid #DE3163;
+  font-family: sans-serif;
   display: inline-block;
   text-align: center;
   width: 45px;
   height: 45px;
   padding: 10px;
-  margin: 20px 10px 0 10px;
+  margin: 20px 7px 0 7px;
   border-radius: 100px 100px 100px 100px;
+  
+}
+
+.active{
+  cursor: pointer;
+  border: 2px solid #E0115F !important;
+  background-color: #FDB9C8;
+  color: white;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
 }
