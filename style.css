@@ -1,11 +1,3 @@
-.active{
-  border: 5px solid #E0115F !important;
-  margin: 20px 7px 0 7px !important;
-  background-color: #FDB9C8;
-  color: white;
-  outline: none;
-}
-
 #piano {
   cursor: pointer;
   padding: 10px;
