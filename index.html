@@ -38,27 +38,27 @@
 </div>  
 
 <!---PIANO NOTES -->
-  <audio data-key="65" class="piano" src="sounds/cat-meow-c.wav"></audio>
-  <audio data-key="87" class="piano" src="sounds/cat-meow-c-s.wav"></audio>
-  <audio data-key="83" class="piano" src="sounds/cat-meow-d.wav"></audio>
-  <audio data-key="69" class="piano" src="sounds/cat-meow-d-s.wav"></audio>
-  <audio data-key="68" class="piano" src="sounds/cat-meow-e.wav"></audio>
-  <audio data-key="70" class="piano" src="sounds/cat-meow-f.wav"></audio>
-  <audio data-key="84" class="piano" src="sounds/cat-meow-f-s.wav"></audio>
-  <audio data-key="71" class="piano" src="sounds/cat-meow-g.wav"></audio>
-  <audio data-key="89" class="piano" src="sounds/cat-meow-g-s.wav"></audio>
-  <audio data-key="72" class="piano" src="sounds/cat-meow-a.wav"></audio>
-  <audio data-key="85" class="piano" src="sounds/cat-meow-a-s.wav"></audio>
-  <audio data-key="74" class="piano" src="sounds/cat-meow-b.wav"></audio>
-  <audio data-key="75" class="piano" src="sounds/cat-meow-c-2.wav"></audio>
-  <audio data-key="79" class="piano" src="sounds/cat-meow-c-2-s.wav"></audio>
-  <audio data-key="76" class="piano" src="sounds/cat-meow-d-2.wav"></audio>
+  <audio data-key="65" class="piano piano-audio" src="sounds/cat-meow-c.wav"></audio>
+  <audio data-key="87" class="piano piano-audio" src="sounds/cat-meow-c-s.wav"></audio>
+  <audio data-key="83" class="piano piano-audio" src="sounds/cat-meow-d.wav"></audio>
+  <audio data-key="69" class="piano piano-audio" src="sounds/cat-meow-d-s.wav"></audio>
+  <audio data-key="68" class="piano piano-audio" src="sounds/cat-meow-e.wav"></audio>
+  <audio data-key="70" class="piano piano-audio" src="sounds/cat-meow-f.wav"></audio>
+  <audio data-key="84" class="piano piano-audio" src="sounds/cat-meow-f-s.wav"></audio>
+  <audio data-key="71" class="piano piano-audio" src="sounds/cat-meow-g.wav"></audio>
+  <audio data-key="89" class="piano piano-audio" src="sounds/cat-meow-g-s.wav"></audio>
+  <audio data-key="72" class="piano piano-audio" src="sounds/cat-meow-a.wav"></audio>
+  <audio data-key="85" class="piano piano-audio" src="sounds/cat-meow-a-s.wav"></audio>
+  <audio data-key="74" class="piano piano-audio" src="sounds/cat-meow-b.wav"></audio>
+  <audio data-key="75" class="piano piano-audio" src="sounds/cat-meow-c-2.wav"></audio>
+  <audio data-key="79" class="piano piano-audio" src="sounds/cat-meow-c-2-s.wav"></audio>
+  <audio data-key="76" class="piano piano-audio" src="sounds/cat-meow-d-2.wav"></audio>
   
 <!---DRUM NOTES -->
-  <audio data-key="67" class="beat" src="sounds/b-1.wav"></audio>
-  <audio data-key="86" class="beat" src="sounds/b-2.wav"></audio>
-  <audio data-key="66" class="beat" src="sounds/b-3.wav"></audio>
-  <audio data-key="78" class="beat" src="sounds/b-4.wav"></audio>
+  <audio data-key="67" class="beat beat-audio" src="sounds/b-1.wav"></audio>
+  <audio data-key="86" class="beat beat-audio" src="sounds/b-2.wav"></audio>
+  <audio data-key="66" class="beat beat-audio" src="sounds/b-3.wav"></audio>
+  <audio data-key="78" class="beat beat-audio" src="sounds/b-4.wav"></audio>
 
 
 <script>
@@ -79,6 +79,7 @@
   function startLoop(x){
     x.play(); 
     x.loop = true;
+
   }
 
   function resetLoop(x){
@@ -88,7 +89,9 @@
     x.loop = false;
   }
  
+
   function playSound(e) {
+    
     if (e.type == 'click'){
       keyCode = e.target.attributes[0].value;
     }else if (e.type == 'touchstart'){
@@ -102,7 +105,6 @@
     const key = document.querySelector('div[data-key="'+keyCode+'"]');
     if (!audio) return;
 
-    ///key.classList.add('active');
     key.classList.add('playing');
     if (audio.classList.contains("piano")){
       audio.currentTime = 0;
@@ -110,6 +112,18 @@
     }      
     if (audio.classList.contains("beat")){
       if(!audio.loop){
+        beataudio = document.getElementsByClassName('beat-audio')
+        active = document.getElementsByClassName('active')
+        for(i = 0; i < beataudio.length; i++){
+          if(beataudio[i].loop = true){
+            resetLoop(beataudio[i])
+          }
+        }
+        for(i = 0; i < active.length; i++){
+          if(active[i].loop = true){
+            active[i].classList.remove('active')
+          }
+        }
           startLoop(audio);
           key.classList.add('active')
         }else if(audio.loop=true){
@@ -117,6 +131,7 @@
           key.classList.remove('active')
         }
       } 
+      
   }  
 
   const keys = Array.from(document.querySelectorAll('.key'));
