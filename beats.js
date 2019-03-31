@@ -1,19 +1,9 @@
-<html>
-<button data-key="0" id="44"></button>
-<button data-key="1" id="45"></button>
-<button data-key="2" id="46"></button>
-<button data-key="3" id="47"></button>
-
-
-
-<script type="text/javascript">
-
 
 files = [
-{id: "44", file: "sounds/b-1.wav"},
-{id: "45", file: "sounds/b-2.wav"},
-{id: "46", file: "sounds/b-3.wav"},
-{id: "47", file: "sounds/b-4.wav"}
+{id: "67", file: "sounds/b-1.wav"},
+{id: "86", file: "sounds/b-2.wav"},
+{id: "66", file: "sounds/b-3.wav"},
+{id: "78", file: "sounds/b-4.wav"}
 ]
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -22,10 +12,10 @@ var audioBuffer = null;
 var isPlaying = false
 var source = null;
 var bufferArray = []
-var file = null; 
+var file = null;
 var activeBeat = null;
 var activeButton = null;
-buttons = Array.from(document.getElementsByTagName('button'))
+buttons = Array.from(document.getElementsByClassName('key-beat'))
 
 function loadSound(url){
   var request = new XMLHttpRequest();
@@ -35,10 +25,10 @@ function loadSound(url){
     context.decodeAudioData(request.response, function(buffer){
  //     audioBuffer = buffer;
       newObj = {"src": url, "buffer":buffer}
-      bufferArray.push(newObj)      
+      bufferArray.push(newObj)
     })
   }
-  request.send()  
+  request.send()
 }
 
 function createBufferArray(){
@@ -48,7 +38,8 @@ function createBufferArray(){
 }
 
 function getBuffer(e){
-  sourceId = e.target.attributes[1].value;
+  sourceId = e.target.attributes[0].value;
+  console.log(sourceId)
   file = files.find(x => x.id === sourceId).file
   audioBuffer = bufferArray.find(x => x.src === file).buffer
 }
@@ -82,7 +73,6 @@ function activeClassToggle(e){
     activeButton = e.target;
     activeButton.classList.add("active");
   // validate that active class is set from scratch
-    console.log(document.getElementsByClassName('active'), "part 1")
     return
   }
   // turn off if active button is clicked again
@@ -90,7 +80,7 @@ function activeClassToggle(e){
     activeButton.classList.remove("active");
     activeButton = null;
   // validate that active class is removed from turned-off button
-    console.log(document.getElementsByClassName('active'), "part 2") 
+    console.log(document.getElementsByClassName('active'), "part 2")
     return
   }
   // toggle active class from last clicked button to event target button
@@ -98,7 +88,7 @@ function activeClassToggle(e){
     activeButton.classList.remove("active");
     activeButton = e.target;
     activeButton.classList.add("active");
-   // validate that active class has been switched 
+   // validate that active class has been switched
     console.log(document.getElementsByClassName('active'), "part 3")
     return
 }
@@ -112,8 +102,3 @@ buttons.forEach(function(elem){
     toggleAudio(audioBuffer)
   })
 })
-
-
-</script>
-
-</html>
