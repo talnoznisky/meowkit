@@ -39,7 +39,6 @@ function createBufferArray(){
 
 function getBuffer(e){
   sourceId = e.target.attributes[0].value;
-  console.log(sourceId)
   file = files.find(x => x.id === sourceId).file
   audioBuffer = bufferArray.find(x => x.src === file).buffer
 }
@@ -80,7 +79,6 @@ function activeClassToggle(e){
     activeButton.classList.remove("active");
     activeButton = null;
   // validate that active class is removed from turned-off button
-    console.log(document.getElementsByClassName('active'), "part 2")
     return
   }
   // toggle active class from last clicked button to event target button
@@ -89,7 +87,6 @@ function activeClassToggle(e){
     activeButton = e.target;
     activeButton.classList.add("active");
    // validate that active class has been switched
-    console.log(document.getElementsByClassName('active'), "part 3")
     return
 }
 
