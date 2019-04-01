@@ -51,26 +51,16 @@ function playSound(buffer){
   isPlaying = true;
 }
 
-function stopSound(buffer){
+function stopSound(){
   source.stop()
-  isPlaying = false;
-  audioBuffer = null;
-  source = null;
 }
 
-function toggleAudio(buffer){
-  if(isPlaying == false){
-    playSound(source)
-  }else if(isPlaying == true){
-    stopSound(source)
-  }
-}
-
-function activeClassToggle(e){
+function activeClassToggle(e, buffer){
   // start if there is no active beat
   if(activeButton == null){
     activeButton = e.target;
     activeButton.classList.add("active");
+    playSound(buffer)
   // validate that active class is set from scratch
     return
   }
@@ -78,24 +68,26 @@ function activeClassToggle(e){
   if(e.target == activeButton){
     activeButton.classList.remove("active");
     activeButton = null;
+    stopSound()
   // validate that active class is removed from turned-off button
     return
   }
   // toggle active class from last clicked button to event target button
-  else if(e.target != activeButton)
+  else if(e.target != activeButton){
+    stopSound()
+    playSound(buffer)
     activeButton.classList.remove("active");
     activeButton = e.target;
     activeButton.classList.add("active");
-   // validate that active class has been switched
     return
+  }
 }
 
 window.addEventListener("load", createBufferArray())
 
 buttons.forEach(function(elem){
   elem.addEventListener('click', function(e){
-    activeClassToggle(e)
     getBuffer(e)
-    toggleAudio(audioBuffer)
+    activeClassToggle(e, audioBuffer)
   })
 })
