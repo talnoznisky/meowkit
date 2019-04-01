@@ -13,7 +13,7 @@ This is pretty messy. And there is much to refactor. The piano and beat elements
 
  Firstly, again credit to Wes Bos: the keyboard trigger functionality is also modified from the the drum kit tutorial. It is developed with HTML5 audio functionality. However - HTML5 added gaps at the end of my drum loops. For gapless playback, the beat button functionality had to be written separately using the Web Audio API. I prototyped that code in a separate project and only merged it into the Meowkit file structure  (with some slight selectors refactoring).
 
- ### TO DO
+ ## TO DO
  - Redesign for mobile
  - Merge audio playback clips
  - Scope recording functionality
