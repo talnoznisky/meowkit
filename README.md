@@ -1,3 +1,5 @@
+https://talnoznisky.github.io/meowkit/
+
 # MEOW MEOW MEOW
 
 Meowkit was inspired by my childhood Casio keyboard, how much I like cats, and Wes Bos's [JavaScript 30](https://javascript30.com/) coursework.
